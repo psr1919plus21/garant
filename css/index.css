@@ -125,6 +125,12 @@
   margin-right: 100px;
 }
 
+.scheme-list__item_1 .scheme-list__pic,
+.scheme-list__item_1 .scheme-list__pic-subtitle {
+  position: relative;
+  top: 14px;
+}
+
 .scheme-list__item_1:before {
   content: '';
   position: absolute;
@@ -274,7 +280,6 @@
 }
 
 .scheme-list__pic-subtitle {
-  display: none;
   text-align: center;
   text-transform: uppercase;
 }
