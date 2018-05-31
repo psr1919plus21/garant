@@ -6,15 +6,67 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Garant | NDS</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>
+  <link rel="stylesheet" href="css/garant-slider.css">
 </head>
 <body>
   <section class="container">
-    <h1>Примеры страниц</h1>
-
-    <div><a href="nds.html">Уплата НДС при оказании нерезидентами услуг в электронной форме</a></div>
-    <div><a href="nds-object.html">Объект налогообложения НДС</a></div>
+    <nav class="garant-nav">
+      <div class="garant-nav__item garant-nav__item_active" data-slide="0">Налоговые ставки</div>
+      <div class="garant-nav__item" data-slide="1">Слайлл2</div>
+      <div class="garant-nav__item" data-slide="2">НДС нерезиденту</div>
+      <div class="garant-nav__item" data-slide="3">Банкротство юр. лица</div>
+    </nav>
+    <div class="garant-slider">
+      <article class="garant-slider__slide">
+        <img class="garant-slider_img" src="img/1.svg" alt="first-slide">
+      </article>
+      <article class="garant-slider__slide">slide 2</article>
+      <article class="garant-slider__slide">
+        <img class="garant-slider_img" src="img/3.svg" alt="first-slide">
+        <div class="tip-wrapper tip-wrapper_1">
+          <img src="img/tip-3.1.svg" alt="tip-3.1">
+        </div>
+        <div class="tip-wrapper tip-wrapper_2">
+          <img src="img/tip-3.2.svg" alt="tip-3.2">
+        </div>
+        <div class="tip-wrapper tip-wrapper_3">
+          <img src="img/tip-3.3.svg" alt="tip-3.3">
+        </div>
+        <div class="tip-wrapper tip-wrapper_4">
+          <img src="img/tip-3.4.svg" alt="tip-3.4">
+        </div>
+      </article>
+      <article class="garant-slider__slide">
+        <img class="garant-slider_img" src="img/4.svg" alt="first-slide">
+      </article>
+    </div>
   </section>
 
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      const $sliderNavLinks = $('.garant-nav__item');
+      const garantSlider = $('.garant-slider').slick({
+        arrows: false
+      });
 
+      $sliderNavLinks.on('click', scrollToSlide);
+
+      function scrollToSlide() {
+        const $this = $(this);
+        $('.garant-nav__item').removeClass('garant-nav__item_active');
+        $this.addClass('garant-nav__item_active');
+
+        const currentSlide = $this.data('slide');
+        garantSlider[0].slick.slickGoTo(currentSlide);
+      }
+
+
+    });
+  </script>
 </body>
 </html>
