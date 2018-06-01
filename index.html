@@ -14,7 +14,7 @@
   <section class="container">
     <nav class="garant-nav">
       <div class="garant-nav__item garant-nav__item_active" data-slide="0">Налоговые ставки</div>
-      <div class="garant-nav__item" data-slide="1">Слайлл2</div>
+      <div class="garant-nav__item" data-slide="1">Товары и услуги</div>
       <div class="garant-nav__item" data-slide="2">НДС нерезиденту</div>
       <div class="garant-nav__item" data-slide="3">Банкротство юр. лица</div>
     </nav>
@@ -22,7 +22,64 @@
       <article class="garant-slider__slide">
         <img class="garant-slider_img" src="img/1.svg" alt="first-slide">
       </article>
-      <article class="garant-slider__slide">slide 2</article>
+
+      <article class="garant-slider__slide">
+        <div class="garant-content-wrapper">
+          <nav class="garant-content-nav">
+            <div data-slide="0" class="garant-content-nav__item garant-content-nav__item_active">
+              <img src="img/nav-1.svg" alt="nav1" class="garant-content-nav__img">
+              <img src="img/nav-1_active.svg" alt="nav1" class="garant-content-nav__img garant-content-nav__img_active">
+            </div>
+
+
+            <h2 class="garant-content-nav__inner-title">Место реализации работ, услуг:</h2>
+            <div data-slide="1" class="garant-content-nav__item">
+              <img src="img/nav-2.svg" alt="nav2" class="garant-content-nav__img">
+              <img src="img/nav-2_active.svg" alt="nav2" class="garant-content-nav__img garant-content-nav__img_active">
+            </div>
+
+            <div data-slide="2" class="garant-content-nav__item">
+              <img src="img/nav-3.svg" alt="nav3" class="garant-content-nav__img">
+              <img src="img/nav-3_active.svg" alt="nav3" class="garant-content-nav__img garant-content-nav__img_active">
+            </div>
+
+            <div data-slide="3" class="garant-content-nav__item">
+              <img src="img/nav-4.svg" alt="nav4" class="garant-content-nav__img">
+              <img src="img/nav-4_active.svg" alt="nav4" class="garant-content-nav__img garant-content-nav__img_active">
+            </div>
+
+            <div data-slide="4" class="garant-content-nav__item">
+              <img src="img/nav-5.svg" alt="nav5" class="garant-content-nav__img">
+              <img src="img/nav-5_active.svg" alt="nav5" class="garant-content-nav__img garant-content-nav__img_active">
+            </div>
+
+            <!-- <div class="garant-content-nav__item"></div> -->
+          </nav>
+
+          <ul class="garant-content">
+            <li data-slide="0" class="garant-content__item garant-content__item_active">
+              <img src="img/2-1.svg" alt="2.1" class="garant-content__img">
+            </li>
+
+            <li data-slide="1" class="garant-content__item">
+              <img src="img/2-2.svg" alt="2.2" class="garant-content__img">
+            </li>
+
+            <li data-slide="2" class="garant-content__item">
+              <img src="img/2-3.svg" alt="2.3" class="garant-content__img">
+            </li>
+
+            <li data-slide="3" class="garant-content__item">
+              <img src="img/2-4.svg" alt="2.4" class="garant-content__img">
+            </li>
+
+            <li data-slide="4" class="garant-content__item">
+              <img src="img/2-5.svg" alt="2.5" class="garant-content__img">
+            </li>
+          </ul>
+        </div>
+      </article>
+
       <article class="garant-slider__slide">
         <img class="garant-slider_img" src="img/3.svg" alt="first-slide">
         <div class="tip-wrapper tip-wrapper_1">
@@ -38,6 +95,7 @@
           <img src="img/tip-3.4.svg" alt="tip-3.4">
         </div>
       </article>
+
       <article class="garant-slider__slide">
         <img class="garant-slider_img" src="img/4.svg" alt="first-slide">
       </article>
@@ -55,6 +113,7 @@
       });
 
       $sliderNavLinks.on('click', scrollToSlide);
+      $initSlideNav();
 
       function scrollToSlide() {
         const $this = $(this);
@@ -63,6 +122,22 @@
 
         const currentSlide = $this.data('slide');
         garantSlider[0].slick.slickGoTo(currentSlide);
+      }
+
+      function $initSlideNav() {
+        $navItems = $('.garant-content-nav__item');
+        $navItems.on('click', selectNavItem);
+      }
+
+      function selectNavItem() {
+        const $this = $(this);
+        const currentSlide = $this.data('slide');
+
+        $('.garant-content-nav__item_active').removeClass('garant-content-nav__item_active');
+        $this.addClass('garant-content-nav__item_active');
+
+        $('.garant-content__item_active').removeClass('garant-content__item_active');
+        $('.garant-content__item[data-slide=' + currentSlide + ']').addClass('garant-content__item_active');
       }
 
 
