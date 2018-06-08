@@ -122,6 +122,10 @@
 
         const currentSlide = $this.data('slide');
         garantSlider[0].slick.slickGoTo(currentSlide);
+
+        setTimeout(function() {
+          resetNavItem();
+        }, 600);
       }
 
       function $initSlideNav() {
@@ -140,6 +144,10 @@
         $('.garant-content__item[data-slide=' + currentSlide + ']').addClass('garant-content__item_active');
       }
 
+      function resetNavItem() {
+        $('.garant-content-nav__item_active').removeClass('garant-content-nav__item_active');
+        $('.garant-content-nav__item').first().addClass('garant-content-nav__item_active');
+      }
 
     });
   </script>
